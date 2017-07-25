@@ -7,8 +7,10 @@ package com.model;
 
 import java.util.Set;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -16,22 +18,31 @@ import javax.persistence.Table;
  */
 @Entity(name = "vendors")
 public class Vendors {
+
     @Id
-    private int vendorId;
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    private int id;
     private String vendorName;
 
-    public Vendors(int vendorId, String vendorName) {
-        this.vendorId = vendorId;
+    public Vendors(int id, String vendorName) {
+        this.id = id;
         this.vendorName = vendorName;
     }
 
-    public int getVendorId() {
-        return vendorId;
+    public Vendors(String vendorName) {
+        this.vendorName = vendorName;
     }
 
-    public void setVendorId(int vendorId) {
-        this.vendorId = vendorId;
+    public int getId() {
+        return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
 
     public String getVendorName() {
         return vendorName;
@@ -43,6 +54,5 @@ public class Vendors {
 
     public Vendors() {
     }
-    
-    
+
 }
