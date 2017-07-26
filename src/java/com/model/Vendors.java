@@ -5,23 +5,22 @@
  */
 package com.model;
 
-import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
  * @author Vineet
  */
 @Entity(name = "vendors")
+@Table(name = "vendors")
 public class Vendors {
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     private String name;
 
