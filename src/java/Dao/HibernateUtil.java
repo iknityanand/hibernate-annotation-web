@@ -26,7 +26,7 @@ public class HibernateUtil {
     static {
         try {
             sessionFactory = new Configuration()
-                    .configure() // configures settings from hibernate.cfg.xml
+                    .configure("hibernate.cfg.xml") // configures settings from hibernate.cfg.xml
                     .buildSessionFactory();
         } catch (Throwable th) {
 

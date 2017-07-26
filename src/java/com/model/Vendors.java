@@ -23,16 +23,26 @@ public class Vendors {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     private int id;
-    private String vendorName;
+    private String name;
 
-    public Vendors(int id, String vendorName) {
+    public Vendors(int id, String name) {
         this.id = id;
-        this.vendorName = vendorName;
+        this.name = name;
     }
 
-    public Vendors(String vendorName) {
-        this.vendorName = vendorName;
+    public String getName() {
+        return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Vendors(String name) {
+        this.name = name;
+    }
+
+   
 
     public int getId() {
         return id;
@@ -41,17 +51,7 @@ public class Vendors {
     public void setId(int id) {
         this.id = id;
     }
-
     
-
-    public String getVendorName() {
-        return vendorName;
-    }
-
-    public void setVendorName(String vendorName) {
-        this.vendorName = vendorName;
-    }
-
     public Vendors() {
     }
 

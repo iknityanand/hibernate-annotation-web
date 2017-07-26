@@ -27,4 +27,11 @@ public class Data {
         session.close();
     }
     
+    public String getUser() {
+        session = helper.getSessionFactory().openSession();
+        session.beginTransaction();
+        vendors = (Vendors) session.get(Vendors.class, 1);
+        return vendors.getName();
+    }
+    
 }

@@ -6,6 +6,7 @@
 package controller;
 
 import Dao.Data;
+import com.model.Vendors;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -35,6 +36,8 @@ public class HelloWorld extends HttpServlet {
             
             Data d=new Data();
             d.addVendor();
+            
+            String v=d.getUser();
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -43,6 +46,7 @@ public class HelloWorld extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet HelloWorld at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Vendor at " + v + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }catch(Exception e){
