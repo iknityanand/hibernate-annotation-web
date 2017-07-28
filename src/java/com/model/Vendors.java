@@ -27,12 +27,21 @@ public class Vendors {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "stock")
-    private Set<Customer> vendorCustomerRecords = new HashSet<Customer>(0);
+    private Set<Customer> vendorCustomerRecords  = new HashSet<Customer>(0);
 
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "stock")
     public Set<Customer> getVendorCustomerRecords() {
         return this.vendorCustomerRecords;
     }
+
+    public Vendors(int id, String name, Set<Customer> vendorCustomerRecords) {
+        this.id = id;
+        this.name = name;
+        this.vendorCustomerRecords = vendorCustomerRecords;
+    }
+    
+    
 
     public void setVendorCustomerRecords(Set<Customer> vendorCustomerRecords) {
         this.vendorCustomerRecords = vendorCustomerRecords;
