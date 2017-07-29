@@ -6,9 +6,12 @@
 package com.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -19,21 +22,33 @@ import javax.persistence.Table;
 @Table(name = "customer")
 public class Customer {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    
     private int id;
     private String name;
     private Vendors vendor;
 
     public Customer() {
     }
-        
-    public Customer(int id, String name, String vendorid) {
+
+    public Customer(int id, String name, Vendors vendor) {
         this.id = id;
         this.name = name;
-        this.vendorid = vendorid;
+        this.vendor = vendor;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "vendorid", nullable = false)
+    public Vendors getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(Vendors vendor) {
+        this.vendor = vendor;
+    }
+        
+    
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -48,14 +63,6 @@ public class Customer {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getVendorid() {
-        return vendorid;
-    }
-
-    public void setVendorid(String vendorid) {
-        this.vendorid = vendorid;
     }
     
     
