@@ -23,9 +23,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "articles")
 public class Articles {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name,description;
     private Category category;
@@ -47,9 +44,8 @@ public class Articles {
     }
 
     
-    
-    
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }

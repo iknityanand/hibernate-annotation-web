@@ -5,7 +5,8 @@
  */
 package Dao;
 
-import com.model.Vendors;
+import com.model.Articles;
+import com.model.Category;
 import org.hibernate.Session;
 import org.hibernate.*;  
 import org.hibernate.cfg.*;  
@@ -16,22 +17,23 @@ import org.hibernate.cfg.*;
  */
 public class Data {
     private Session session;
-    private Vendors vendors;
     private HibernateUtil helper;
     
-    public void addVendor(){
-        vendors=new Vendors("Captiain littlewood co ltd");
+    public void addArticles(){
         session=helper.getSessionFactory().openSession();
         session.beginTransaction();
-        session.save(vendors);
+        Category c=new Category();
+        c.setName("Self-help");
+        session.save(c);
+        
+        Articles a=new Articles();
+        a.setName("Extraodinary");
+        a.setDescription("Extraodinary People do Extraordinary things");
+        a.setCategory(c);
+        session.save(a);
+//        c.getArticles().add(a);
+        session.getTransaction().commit();
         session.close();
-    }
-    
-    public String getUser() {
-        session = helper.getSessionFactory().openSession();
-        session.beginTransaction();
-        vendors = (Vendors) session.get(Vendors.class, 1);
-        return vendors.getName();
     }
     
 }

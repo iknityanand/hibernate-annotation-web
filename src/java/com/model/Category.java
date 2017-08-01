@@ -22,8 +22,6 @@ import javax.persistence.Table;
 @Table(name = "category")
 public class Category {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private Set<Articles> articles;
@@ -36,6 +34,9 @@ public class Category {
         this.name = name;
     }
 
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -58,7 +59,7 @@ public class Category {
         this.articles = articles;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "articles")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
     public Set<Articles> getArticles() {
         return articles;
     }
