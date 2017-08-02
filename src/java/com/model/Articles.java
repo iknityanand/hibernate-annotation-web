@@ -24,24 +24,26 @@ import javax.persistence.Table;
 @Table(name = "articles")
 public class Articles {
     private int id;
-    private String name,description;
+    private String title,description;
     private Category category;
 
     public Articles() {
     }
 
-    public Articles(int id, String name, String description) {
+    public Articles(int id, String title, String description) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.description = description;
     }
 
-    public Articles(int id, String name, String description, Category category) {
+    public Articles(int id, String title, String description, Category category) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.description = description;
         this.category = category;
     }
+
+    
 
     
     @Id
@@ -54,13 +56,15 @@ public class Articles {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
+
+    
 
     public String getDescription() {
         return description;

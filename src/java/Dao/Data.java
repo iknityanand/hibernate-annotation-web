@@ -25,9 +25,11 @@ public class Data {
         Category c=new Category();
         c.setName("Self-help");
         session.save(c);
+        session.getTransaction().commit();
+        session.beginTransaction();
         
         Articles a=new Articles();
-        a.setName("Extraodinary");
+        a.setTitle("Extraodinary");
         a.setDescription("Extraodinary People do Extraordinary things");
         a.setCategory(c);
         session.save(a);
