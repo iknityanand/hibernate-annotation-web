@@ -29,10 +29,15 @@ public class Data {
         session.beginTransaction();
         
         Articles a=new Articles();
-        a.setTitle("Extraodinary");
-        a.setDescription("Extraodinary People do Extraordinary things");
+        a.setTitle("1 Extraodinary");
+        a.setDescription("1 Extraodinary People do Extraordinary things");
         a.setCategory(c);
         session.save(a);
+        Articles a2=new Articles();
+        a2.setTitle("2 Extraodinary again");
+        a2.setDescription("2 odinary People do Extraordinary things");
+        a2.setCategory(c);
+        session.save(a2);
 //        c.getArticles().add(a);
         session.getTransaction().commit();
         session.close();
